@@ -1,0 +1,162 @@
+/* Body & background */
+body {
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:url('https://eoimages.gsfc.nasa.gov/images/imagerecords/145000/145474/world.topo.bathy.200412.3x5400x2700.jpg') center/cover no-repeat fixed;
+  color:#fff;
+  position:relative;
+  z-index:0;
+}
+
+/* Overlay for contrast */
+body::before {
+  content:"";
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.25);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Header */
+header{
+  position:fixed; top:0; left:0;
+  width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  background: rgba(0,0,0,0.5);
+  padding:12px 25px;
+  z-index:1001;
+  backdrop-filter: blur(8px);
+  box-shadow:0 0 20px rgba(46,204,113,0.5);
+  border-bottom:2px solid rgba(46,204,113,0.3);
+}
+header h1{
+  margin:0;
+  font-size:26px;
+  color:#2ecc71;
+  text-shadow:0 0 12px #2ecc71, 0 0 20px #27ae60;
+}
+header nav a{
+  color:#fff;
+  margin-left:18px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+header nav a:hover{
+  color:#2ecc71;
+  text-shadow:0 0 10px #2ecc71;
+}
+
+/* Hero section */
+#hero{
+  margin-top:90px;
+  background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,50,0,0.35));
+  backdrop-filter: blur(10px);
+  border-radius:18px;
+  padding:30px;
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  box-shadow:0 0 35px rgba(46,204,113,0.6);
+}
+#hero h2{
+  font-size:38px;
+  color:#2ecc71;
+  margin-bottom:20px;
+  text-shadow:0 0 15px #2ecc71,0 0 25px #27ae60;
+}
+
+/* Stats */
+#hero .stats{ display:flex; flex-wrap:wrap; justify-content:space-around; font-size:16px; }
+#hero .stats div{
+  margin:12px;
+  background: rgba(46,204,113,0.25);
+  padding:18px 25px;
+  border-radius:12px;
+  min-width:150px;
+  transition:0.3s;
+  position:relative;
+  box-shadow:0 0 12px rgba(46,204,113,0.5);
+}
+#hero .stats div:hover{
+  background: rgba(46,204,113,0.6);
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #2ecc71, 0 0 40px #27ae60;
+}
+.pulse{
+  position:absolute;
+  top:-6px; right:-6px;
+  width:18px; height:18px;
+  background:#ff4757;
+  border-radius:50%;
+  animation:pulse 1.5s infinite;
+  box-shadow:0 0 12px #ff4757;
+}
+@keyframes pulse{0%{transform:scale(0.8);opacity:1;}50%{transform:scale(1.6);opacity:0.6;}100%{transform:scale(0.8);opacity:1;}}
+
+/* Controls */
+#controls{
+  padding:25px;
+  text-align:center;
+  margin:25px auto;
+  background: rgba(0,0,0,0.35);
+  border-radius:16px;
+  backdrop-filter: blur(8px);
+  max-width:1200px;
+  box-shadow:0 0 30px rgba(46,204,113,0.4);
+}
+
+/* Map */
+#map{ height:65vh; margin:25px auto; max-width:1200px; border-radius:16px; box-shadow:0 0 30px rgba(0,0,0,0.6); }
+
+/* Charts */
+.charts{ display:flex; flex-wrap:wrap; gap:20px; padding:25px; justify-content:center; }
+canvas{ background:rgba(255,255,255,0.95); border-radius:16px; padding:12px; box-shadow:0 0 25px rgba(46,204,113,0.5); }
+
+/* Sidebar */
+#sidebar{
+  position:fixed; top:90px; right:0;
+  width:280px;
+  background: rgba(0,0,0,0.6);
+  padding:18px;
+  border-radius:16px 0 0 16px;
+  color:#fff;
+  backdrop-filter: blur(10px);
+  max-height:80vh;
+  overflow-y:auto;
+  box-shadow:0 0 35px rgba(46,204,113,0.6);
+  z-index:1001;
+}
+
+/* Floating flowers and stars */
+.floating-flower, .star{
+  position:fixed; pointer-events:none; z-index:0;
+}
+.floating-flower{
+  width:12px; height:12px;
+  background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="pink"><path d="M12 2a2 2 0 0 1 2 2c0 .7-.2 1.4-.6 2a4.5 4.5 0 0 1 6.1 6.1c.6-.4 1.3-.6 2-.6a2 2 0 0 1 0 4c-.7 0-1.4-.2-2-.6a4.5 4.5 0 0 1-6.1 6.1c.4.6.6 1.3.6 2a2 2 0 0 1-4 0c0-.7.2-1.4.6-2a4.5 4.5 0 0 1-6.1-6.1c-.6.4-1.3.6-2 .6a2 2 0 0 1 0-4c.7 0 1.4.2 2 .6a4.5 4.5 0 0 1 6.1-6.1c-.4-.6-.6-1.3-.6-2a2 2 0 0 1 2-2z"/></svg>') no-repeat center/contain;
+  animation:float 12s linear infinite; opacity:0.7;
+}
+@keyframes float{0%{transform:translateY(100vh) rotate(0deg);}100%{transform:translateY(-120vh) rotate(360deg);}}
+.star{
+  width:3px; height:3px; background:#fff; border-radius:50%; opacity:0.6;
+  animation:starAnim 20s linear infinite;
+}
+@keyframes starAnim{0%{transform:translateY(100vh);}100%{transform:translateY(-120vh);}}
+
+/* Loading overlay */
+#loadingOverlay{
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.7);
+  display:flex; justify-content:center; align-items:center;
+  z-index:2000; color:#fff; font-size:24px;
+  display:none;
+}
+#loadingOverlay span{
+  border:4px solid #fff; border-top:4px solid #2ecc71; border-radius:50%;
+  width:50px; height:50px; animation:spin 1s linear infinite; display:block;
+}
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
